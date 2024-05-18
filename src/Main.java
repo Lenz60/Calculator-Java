@@ -31,19 +31,26 @@ public class Main {
         String finalChoice = choices[choice-1];
 
         //? Input a Number to proceed the calculation
-        int num1;
-        int num2;
-        System.out.println("Enter number 1 :");
-        num1 = scanner.nextInt();
-        System.out.println("Enter number 2 :");
-        num2 = scanner.nextInt();
+        double num1;
+        double num2;
+        num1 = checkDouble(scanner, "Enter number 1 :");
+        num2 = checkDouble(scanner, "Enter number 2 :");
+
 
         //? Send the final choice and numbers to calculator class to calculate
         //? and display the result
         System.out.println("Result : ");
-        System.out.println(Calculate.Calculating(finalChoice, num1, num2));
+        double Result = Calculate.Calculating(finalChoice,num1,num2);
+        System.out.println(Result);
+    }
 
-
-
+    public static double checkDouble (Scanner scanner, String prompt){
+        System.out.println(prompt);
+        while(!scanner.hasNextDouble()){
+            System.out.println("Invalid Input, Please input a number");
+            scanner.next();
+            System.out.println(prompt);
+        }
+        return scanner.nextDouble();
     }
 }
